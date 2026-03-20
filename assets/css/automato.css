@@ -704,3 +704,79 @@ a:hover { color: var(--tomato-bright); }
     height: auto;
     display: block;
 }
+
+/* Mobile banner tagline fix */
+@media screen and (max-width: 736px) {
+    #banner .content p.banner-tagline {
+        font-size: 1.6rem !important;
+        line-height: 1.3 !important;
+    }
+}
+
+/* ============================================
+   MOBILE — banner tagline size fix
+   Font too large causes mid-line wrapping
+   which makes <br> lines run together
+   ============================================ */
+@media screen and (max-width: 736px) {
+    #banner .content p.banner-tagline {
+        font-size: 1.55rem !important;
+        line-height: 1.4 !important;
+        letter-spacing: 0.01em !important;
+    }
+    #banner .content p.banner-sub {
+        font-size: 0.72rem !important;
+    }
+}
+
+/* ============================================
+   FIX: Force <br> to actually break lines
+   Template flex layout collapses <br> tags
+   ============================================ */
+#banner .content p.banner-tagline {
+    display: block !important;
+    white-space: pre-line !important;
+}
+
+#banner .content p.banner-tagline br {
+    display: block !important;
+    content: "" !important;
+    margin: 0 !important;
+}
+
+@media screen and (max-width: 980px) {
+    #banner .content p.banner-tagline {
+        font-size: 1.6rem !important;
+        line-height: 1.35 !important;
+    }
+}
+
+/* ============================================
+   MOBILE — logo text size fix
+   ============================================ */
+@media screen and (max-width: 736px) {
+    #header .logo > span {
+        font-size: 1em !important;
+        letter-spacing: 0.02em !important;
+    }
+    #header .logo img {
+        width: 24px !important;
+        height: 24px !important;
+    }
+}
+
+/* ============================================
+   FIX: Template hides .logo span at 480px
+   Override to keep our logo text visible
+   ============================================ */
+@media screen and (max-width: 480px) {
+    #header .logo > span {
+        display: inline-block !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 0.02em !important;
+    }
+    #header .logo img {
+        width: 22px !important;
+        height: 22px !important;
+    }
+}
