@@ -1,0 +1,706 @@
+/* =============================================
+   AuTomato Labs — Brand Override CSS v3
+   Kills all #242943 navy, applies dark red theme
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@300;400;600&display=swap');
+
+:root {
+    --tomato-red:    #e03030;
+    --tomato-bright: #ff5555;
+    --tomato-dark:   #aa1a1a;
+    --bg:            #0d0d0d;
+    --bg2:           #151515;
+    --bg3:           #1c1c1c;
+    --white:         #ffffff;
+    --muted:         rgba(255,255,255,0.5);
+    --border-red:    rgba(224,48,48,0.25);
+}
+
+/* ============================================
+   NUKE THE NAVY — body + wrapper backgrounds
+   ============================================ */
+html,
+body,
+#wrapper {
+    background-color: var(--bg) !important;
+}
+
+/* ============================================
+   NUKE THE BANNER NAVY OVERLAY
+   The template uses #banner:after as a colored
+   pseudo-element overlay. Kill it entirely.
+   ============================================ */
+#banner:after {
+    background-color: transparent !important;
+    opacity: 0 !important;
+    display: none !important;
+}
+
+/* Also kill the preload state that forces opacity:1 */
+body.is-preload #banner:after {
+    opacity: 0 !important;
+}
+
+/* ============================================
+   BANNER — clean dark background, bold type
+   ============================================ */
+#banner {
+    background-color: var(--bg) !important;
+    background-image: none !important;
+}
+
+#banner > .inner {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+}
+
+/* Also kill the preload fade/blur on the inner */
+body.is-preload #banner > .inner {
+    filter: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+#banner header.major h1 {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: clamp(3.5rem, 7vw, 6.5rem) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+    line-height: 1.0 !important;
+    color: var(--white) !important;
+}
+
+/* Red line under major headings */
+#banner header.major > :first-child:after,
+header.major > :first-child:after {
+    background-color: var(--tomato-red) !important;
+}
+
+/* ============================================
+   KILL ALL TILE COLOR OVERLAYS
+   nth-child colors: cyan, purple, salmon,
+   orange, blue, green — all gone.
+   ============================================ */
+.tiles article:before,
+.tiles article:nth-child(6n - 5):before,
+.tiles article:nth-child(6n - 4):before,
+.tiles article:nth-child(6n - 3):before,
+.tiles article:nth-child(6n - 2):before,
+.tiles article:nth-child(6n - 1):before,
+.tiles article:nth-child(6n):before {
+    background-color: rgba(8, 8, 8, 0.72) !important;
+    opacity: 1 !important;
+    transition: background-color 0.4s ease !important;
+}
+
+.tiles article:hover:before {
+    background-color: rgba(8, 8, 8, 0.45) !important;
+    opacity: 1 !important;
+}
+
+.tiles article:after {
+    background-color: rgba(0,0,0,0.25) !important;
+}
+
+/* Tile text — bold and legible */
+.tiles article header.major h3 a {
+    font-family: 'Rajdhani', sans-serif !important;
+    font-size: 1.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: var(--white) !important;
+}
+
+.tiles article header.major h3 a:after {
+    background-color: var(--tomato-red) !important;
+}
+
+.tiles article header.major p {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.6) !important;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+#header {
+    background-color: rgba(10, 10, 10, 0.97) !important;
+    border-bottom: 1px solid var(--border-red) !important;
+}
+
+#header .logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45em !important;
+    border-bottom: none !important;
+    color: var(--white) !important;
+    text-decoration: none !important;
+}
+
+#header .logo img {
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    align-self: center;
+}
+
+#header .logo strong {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+}
+
+#header .logo > span {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1.3em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#header nav a {
+    border-color: rgba(224,48,48,0.4) !important;
+    color: rgba(255,255,255,0.85) !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+#header nav a:hover {
+    border-color: var(--tomato-red) !important;
+    color: var(--white) !important;
+    background: rgba(224,48,48,0.1);
+}
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+#main,
+#mission,
+#rules,
+#spotlights,
+.spotlights section .content,
+section.spotlights {
+    background-color: var(--bg) !important;
+}
+
+.spotlights section:nth-child(even) .content {
+    background-color: var(--bg2) !important;
+}
+
+.spotlights section {
+    border-top: 1px solid rgba(224,48,48,0.12) !important;
+}
+
+/* ============================================
+   TYPOGRAPHY — section bodies
+   ============================================ */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    color: rgba(255,255,255,0.88) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Rajdhani', sans-serif !important;
+    color: var(--white) !important;
+    letter-spacing: 0.04em;
+}
+
+p, li {
+    color: rgba(255,255,255,0.82) !important;
+    line-height: 1.75;
+}
+
+strong { color: var(--white) !important; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.button.primary,
+input[type="submit"].primary {
+    background-color: var(--tomato-red) !important;
+    border-color: var(--tomato-red) !important;
+    color: var(--white) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+}
+
+.button.primary:hover,
+input[type="submit"].primary:hover {
+    background-color: var(--tomato-bright) !important;
+    border-color: var(--tomato-bright) !important;
+}
+
+.button {
+    border-color: rgba(224,48,48,0.45) !important;
+    color: rgba(255,255,255,0.88) !important;
+    font-family: 'Rajdhani', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+}
+
+.button:hover {
+    border-color: var(--tomato-red) !important;
+    color: var(--white) !important;
+}
+
+/* ============================================
+   MENU
+   ============================================ */
+#menu {
+    background: #111111 !important;
+    border-left: 3px solid var(--tomato-red) !important;
+}
+
+#menu .links a {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom-color: rgba(224,48,48,0.15) !important;
+    color: rgba(255,255,255,0.8) !important;
+}
+
+#menu .links a:hover { color: var(--tomato-bright) !important; }
+
+/* ============================================
+   CONTACT
+   ============================================ */
+#contact {
+    background-color: var(--bg2) !important;
+    border-top: 2px solid var(--tomato-red);
+}
+
+#contact h2, #contact h3 { color: var(--white) !important; }
+
+#contact input[type="text"],
+#contact input[type="email"],
+#contact textarea {
+    background-color: rgba(255,255,255,0.04) !important;
+    border-color: rgba(224,48,48,0.3) !important;
+    color: var(--white) !important;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+    border-color: var(--tomato-red) !important;
+}
+
+.contact-method h3 {
+    color: var(--white) !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+#footer {
+    background-color: #090909 !important;
+    border-top: 1px solid rgba(224,48,48,0.18) !important;
+}
+
+#footer .icons a { color: rgba(255,255,255,0.38) !important; }
+#footer .icons a:hover { color: var(--tomato-red) !important; }
+#footer .copyright li { color: rgba(255,255,255,0.35) !important; }
+#footer .copyright a { color: var(--muted) !important; }
+
+/* ============================================
+   GLOBAL LINKS
+   ============================================ */
+a { color: var(--tomato-red); }
+a:hover { color: var(--tomato-bright); }
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.section-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--tomato-red);
+    display: block;
+    margin-bottom: 0.6rem;
+}
+
+.motto {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    border-left: 2px solid var(--tomato-red);
+    padding-left: 1em;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.stats-bar {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 2rem;
+    padding: 1.4rem 1.8rem;
+    background: rgba(224,48,48,0.07);
+    border: 1px solid rgba(224,48,48,0.22);
+    border-radius: 3px;
+}
+
+.stats-bar .stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stats-bar .stat-number {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--tomato-red);
+    line-height: 1;
+}
+
+.stats-bar .stat-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.2rem;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--tomato-dark); border-radius: 2px; }
+
+/* ============================================
+   LOGO — kill the white box on <strong>
+   ============================================ */
+#header .logo strong,
+#header .logo:hover strong,
+#header .logo:active strong {
+    background-color: transparent !important;
+    color: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    display: inline !important;
+    vertical-align: baseline !important;
+    font-size: inherit !important;
+}
+
+#header .logo strong em {
+    color: var(--tomato-red);
+    font-style: normal;
+}
+
+/* ============================================
+   BANNER — override forced all-caps tiny text
+   The template applies: font-size:0.7em,
+   font-weight:600, letter-spacing:0.25em,
+   text-transform:uppercase to #banner p
+   ============================================ */
+#banner .content p,
+#banner .content p.banner-tagline,
+#banner .content p.banner-sub {
+    font-size: 2rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+    text-transform: none !important;
+    line-height: 1.5 !important;
+    color: rgba(255,255,255,0.88) !important;
+    max-width: 700px;
+}
+
+#banner .content p.banner-tagline {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.2 !important;
+}
+
+#banner .content p.banner-sub {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.06em !important;
+    color: var(--tomato-red) !important;
+    margin-bottom: 0 !important;
+    line-height: 1.6 !important;
+}
+
+/* Make banner content flex column so text stacks cleanly */
+#banner > .inner .content {
+    display: block !important;
+    margin: 0 !important;
+}
+
+#banner > .inner .content > * {
+    margin-right: 0 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* ============================================
+   BANNER LOGO (transparent PNG above title)
+   ============================================ */
+.banner-logo-wrap {
+    margin-bottom: 1.2rem;
+}
+
+.banner-logo {
+    width: 90px;
+    height: auto;
+    filter: drop-shadow(0 0 18px rgba(224,48,48,0.4));
+}
+
+/* ============================================
+   VIDEO TILES
+   Videos need to fill tile the same way
+   img does — absolute positioned, cover
+   ============================================ */
+.tiles article .tile-video-wrap,
+.tiles article span.tile-video-wrap {
+    display: block;
+    position: absolute !important;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.tiles article .tile-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ============================================
+   VIDEO SPOTLIGHTS
+   ============================================ */
+.spotlight-video-wrap {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.spotlight-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* ============================================
+   INLINE GIF (Open Source spotlight)
+   ============================================ */
+.inline-gif-wrap {
+    margin: 1.2rem 0;
+    border: 1px solid rgba(224,48,48,0.25);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #0d0d0d;
+}
+
+.inline-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-height: 240px;
+    object-fit: cover;
+}
+
+.gif-caption {
+    font-family: 'Space Mono', monospace !important;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.38) !important;
+    padding: 0.5rem 0.75rem;
+    background: rgba(0,0,0,0.5);
+    margin: 0 !important;
+}
+
+/* ============================================
+   NETWORK MAP (Remote Access spotlight)
+   ============================================ */
+.networkmap-wrap {
+    margin-top: 1.2rem;
+    border: 1px solid rgba(224,48,48,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.networkmap-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ============================================
+   VIDEO TILES
+   The template reads .image img src and sets
+   it as background-image on the article, then
+   hides .image. For video tiles we:
+   1. Place <video class="tile-bg-video"> directly
+      inside the article (sibling to .image)
+   2. Position it absolute, covering the article
+   3. Clear the template's background-image via JS
+   ============================================ */
+.tiles article.tile-has-video {
+    background-image: none !important;
+}
+
+.tiles article .tile-bg-video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    z-index: 0 !important;
+    display: block !important;
+    pointer-events: none;
+}
+
+/* z-index stack for tile layers:
+   0 = video background
+   1 = :after dark overlay
+   2 = :before color (now killed to dark)
+   3 = header text
+*/
+.tiles article.tile-has-video:before,
+.tiles article.tile-has-video:after {
+    z-index: 1 !important;
+}
+
+.tiles article.tile-has-video header.major {
+    position: relative;
+    z-index: 4 !important;
+}
+
+/* ============================================
+   SPOTLIGHT VIDEO — fix height on the image
+   column (template sets a fixed height via
+   .spotlights > section .image)
+   ============================================ */
+.spotlight-video-wrap {
+    position: relative !important;
+    overflow: hidden !important;
+    display: block !important;
+}
+
+.spotlight-video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+/* ============================================
+   FOUNDER / ABOUT SECTION
+   ============================================ */
+.founder-wrap {
+    display: flex;
+    gap: 3.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.founder-photo-col {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.founder-photo-box {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid rgba(224,48,48,0.35);
+    box-shadow: 0 0 30px rgba(224,48,48,0.15);
+}
+
+.founder-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+}
+
+.founder-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    width: 100%;
+}
+
+.founder-links .button {
+    text-align: center;
+    width: 100%;
+    font-size: 0.78rem !important;
+}
+
+.founder-bio-col {
+    flex: 1;
+    min-width: 260px;
+}
+
+.founder-bio-col p {
+    color: rgba(255,255,255,0.8) !important;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+    .founder-photo-col { flex: 0 0 100%; align-items: flex-start; }
+    .founder-links { flex-direction: row; }
+}
+
+/* ============================================
+   INLINE FLYER (portrait images in content)
+   ============================================ */
+.inline-flyer-wrap {
+    margin: 1.2rem 0;
+    border: 1px solid rgba(224,48,48,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.inline-flyer {
+    width: 100%;
+    height: auto;
+    display: block;
+}
